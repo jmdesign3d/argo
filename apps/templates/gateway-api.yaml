@@ -1,0 +1,15 @@
+apiVersion: {{ .Values.apiVersion }}
+kind: Application
+metadata:
+  name: {{ .Values.gatewayapi.appName }}
+  namespace: {{ .Values.argoNamespace }}
+spec:
+  project: {{ .Values.gatewayapi.spec.project }}
+  destination:
+    server: {{ .Values.gatewayapi.spec.destination.server }}
+  source:
+    path: {{ .Values.gatewayapi.spec.source.path }}
+    repoURL: {{ .Values.defaultAppsRepoUrl }}
+    targetRevision: {{ .Values.defaultAppsTargetRev }}
+  syncPolicy: 
+    {{- .Values.gatewayapi.spec.syncPolicy | toYaml | nindent 4 }}

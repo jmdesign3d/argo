@@ -1,0 +1,20 @@
+apiVersion: {{ .Values.apiVersion }}
+kind: Application
+metadata:
+  name: {{ .Values.traefik.appName }}
+  namespace: {{ .Values.argoNamespace }}
+spec:
+  destination:
+    namespace: {{ .Values.traefik.spec.destination.namespace }}
+    server: {{ .Values.traefik.spec.destination.server }}
+  source:
+    repoURL: {{ .Values.traefik.spec.source.repoURL }}
+    targetRevision: {{ .Values.traefik.spec.source.targetRevision }}
+    chart: {{ .Values.traefik.spec.source.chart }}
+    helm:
+      values: |
+    {{ .Files.Get "values/traefik.yaml" | nindent 8 }}
+
+  project: {{ .Values.traefik.spec.project }}
+  syncPolicy: 
+    {{- .Values.metrics.spec.syncPolicy | toYaml | nindent 4 }}

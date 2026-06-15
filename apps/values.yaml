@@ -1,0 +1,69 @@
+gatewayapi:
+  appName: gateway-api-crds
+  spec:
+    project: default
+    syncPolicy:
+      automated:
+        selfHeal: true
+      syncOptions:
+        - Validate=false
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - PruneLast=true
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: gateway-api
+    source:
+      path: gateway-api-crds
+traefik:
+  enabled: true
+  appName: traefik
+  spec:
+    project: default
+    syncPolicy:
+      automated:
+        selfHeal: true
+      syncOptions:
+        - Validate=false
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - PruneLast=true
+      retry:
+        limit: 10
+        backoff:
+          duration: 5s
+          factor: 2
+          maxDuration: 3m
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: traefik
+    source:
+      repoURL: https://traefik.github.io/charts
+      targetRevision: 40.3.0
+      chart: traefik
+traefik-public:
+  enabled: true
+  appName: traefik-public
+  spec:
+    project: default
+    syncPolicy:
+      automated:
+        selfHeal: true
+      syncOptions:
+        - Validate=false
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - PruneLast=true
+      retry:
+        limit: 10
+        backoff:
+          duration: 5s
+          factor: 2
+          maxDuration: 3m
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: traefik-public
+    source:
+      repoURL: https://traefik.github.io/charts
+      targetRevision: 40.3.0
+      chart: traefik
