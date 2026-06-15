@@ -1,3 +1,7 @@
+apiVersion: argoproj.io/v1alpha1
+argoNamespace: argocd
+defaultAppsRepoUrl: https://github.com/jmdesign3d/argo.git
+defaultAppsTargetRev: main
 gatewayapi:
   appName: gateway-api-crds
   spec:
