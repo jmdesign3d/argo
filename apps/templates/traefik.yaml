@@ -17,4 +17,4 @@ spec:
 
   project: {{ .Values.traefik.spec.project }}
   syncPolicy:
-    { { - .Values.traefik.spec.syncPolicy | toYaml | nindent 4 } }
+    {{- .Values.traefik.spec.syncPolicy | toYaml | nindent 4 }}
