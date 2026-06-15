@@ -45,7 +45,7 @@ traefik:
       repoURL: https://traefik.github.io/charts
       targetRevision: 40.3.0
       chart: traefik
-traefik-public:
+traefikpublic:
   enabled: true
   appName: traefik-public
   spec:
