@@ -11,3 +11,5 @@ spec:
     path: {{ .Values.gatewayapi.spec.source.path }}/{{.Values.gatewayapi.version}}
     repoURL: {{ .Values.defaultAppsRepoUrl }}
     targetRevision: {{ .Values.defaultAppsTargetRev }}
+  syncPolicy:
+    { { - .Values.gatewayapi.spec.syncPolicy | toYaml | nindent 4 } }
