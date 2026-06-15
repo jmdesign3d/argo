@@ -4,6 +4,7 @@ defaultAppsRepoUrl: https://github.com/jmdesign3d/argo.git
 defaultAppsTargetRev: main
 gatewayapi:
   appName: gateway-api-crds
+  version: v1.5.1
   spec:
     project: default
     syncPolicy:

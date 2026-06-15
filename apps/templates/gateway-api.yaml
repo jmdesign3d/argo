@@ -8,6 +8,6 @@ spec:
   destination:
     server: {{ .Values.gatewayapi.spec.destination.server }}
   source:
-    path: {{ .Values.gatewayapi.spec.source.path }}
+    path: {{ .Values.gatewayapi.spec.source.path }}/{{.Values.gatewayapi.version}}
     repoURL: {{ .Values.defaultAppsRepoUrl }}
     targetRevision: {{ .Values.defaultAppsTargetRev }}
