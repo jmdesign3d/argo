@@ -16,5 +16,3 @@ spec:
     {{ .Files.Get "values/traefikpublic.yaml" | nindent 8 }}
 
   project: {{ .Values.traefikpublic.spec.project }}
-  syncPolicy: 
-    {{- .Values.metrics.spec.syncPolicy | toYaml | nindent 4 }}
