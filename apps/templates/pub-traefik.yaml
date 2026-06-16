@@ -13,7 +13,7 @@ spec:
     chart: {{ .Values.pubTraefik.spec.source.chart }}
     helm:
       values: |
-    {{ .Files.Get "values/pubTraefik.yaml" | nindent 8 }}
+    {{ .Files.Get "values/pub-traefik.yaml" | nindent 8 }}
 
   project: {{ .Values.pubTraefik.spec.project }}
   syncPolicy:
