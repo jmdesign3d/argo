@@ -1,6 +1,7 @@
 providers:
   kubernetesGateway:
     enabled: true
+
 gatewayClass:
   enabled: true
 gateway:
